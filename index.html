@@ -15,19 +15,42 @@
       background:#0f0f0f;
       font-family:Arial, sans-serif;
       color:white;
+      padding:20px;
     }
 
     .box{
       background:#1a1a1a;
       padding:30px;
       border-radius:20px;
-      width:320px;
+      width:350px;
       text-align:center;
       box-shadow:0 0 25px rgba(0,0,0,0.5);
     }
 
     h1{
+      margin-bottom:10px;
+    }
+
+    .guide{
+      font-size:14px;
+      color:#bdbdbd;
       margin-bottom:20px;
+      line-height:1.5;
+    }
+
+    .example{
+      background:#2a2a2a;
+      padding:10px;
+      border-radius:10px;
+      margin-top:10px;
+      word-break:break-all;
+      font-size:13px;
+      color:#8ab4f8;
+    }
+
+    .highlight{
+      color:#00ff99;
+      font-weight:bold;
     }
 
     input{
@@ -40,6 +63,7 @@
       margin-bottom:15px;
       background:#2b2b2b;
       color:white;
+      box-sizing:border-box;
     }
 
     button{
@@ -62,12 +86,22 @@
 <body>
 
 <div class="box">
-  <h1>Join Meet</h1>
+  <h1>Join Google Meet</h1>
+
+  <div class="guide">
+    Paste your Google Meet code or full invite link below.
+    
+    <div class="example">
+      https://meet.google.com/<span class="highlight">abc-defg-hij</span>
+    </div>
+
+    The highlighted part is the meeting passcode 😌
+  </div>
 
   <input 
     type="text" 
     id="meetCode" 
-    placeholder="Paste Meet code or link"
+    placeholder="Enter Meet code or link"
   >
 
   <button onclick="joinMeet()">Join Meeting</button>
@@ -82,13 +116,13 @@ function joinMeet() {
         return;
     }
 
-    // If user pasted full link
+    // Full URL pasted
     if (input.startsWith("http")) {
         window.location.href = input;
         return;
     }
 
-    // Otherwise assume it's a Meet code
+    // Assume Meet code
     window.location.href = "https://meet.google.com/" + input;
 }
 </script>
